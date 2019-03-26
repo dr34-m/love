@@ -1,0 +1,41 @@
+<html><head>
+<style>
+/* music */
+@-webkit-keyframes reverseRotataZ{
+ 0%{-webkit-transform: rotateZ(0deg);}
+ 100%{-webkit-transform: rotateZ(-360deg);}
+}
+@-webkit-keyframes rotataZ{
+ 0%{-webkit-transform: rotateZ(0deg);}
+ 100%{-webkit-transform: rotateZ(360deg);}
+}
+#musicControl { position:fixed;right:10px;top:20px;margin-top:0;display:inline-block;z-index:99999999}
+#musicControl a { display:inline-block;width: 60px; height: 60px; overflow:hidden;background:url('./images/mcbg.png') no-repeat;background-size:100%;}
+#musicControl a audio{width:100%;height:56px;}
+#musicControl a.stop { background-position:left bottom;}
+#musicControl a.on { background-position:0px 1px;-webkit-animation: reverseRotataZ 1.2s linear infinite;}
+#music_play_filter{width:100%;height:100%;overflow:hidden;position:fixed;top:0;left:0;z-index:99999998;}
+</style>
+
+</head>
+<!--音乐-->
+<span id="musicControl">
+ <a id="mc_play" class="on" onclick="play_music();">
+ <audio id="musicfx" loop="loop" autoplay="autoplay">
+ <source src="https://www.yejinmo.com/love/index/bg.mp3" type="audio/mpeg">
+ </audio>
+ </a>
+ </span>
+<script language="javascript">
+function play_music(){
+	var music = document.getElementById("musicfx");
+	if(music.paused){
+		music.play();
+		document.getElementById('mc_play').setAttribute('class','on');
+	}else{
+		music.pause();
+		document.getElementById('mc_play').setAttribute('class','stop');
+	}
+}
+</script>
+</html>
